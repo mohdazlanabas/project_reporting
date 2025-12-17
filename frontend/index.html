@@ -98,20 +98,27 @@
               </select>
             </div>
             <div>
-              <label>Weather (current)</label>
-              <input name="weather" placeholder="Sunny / Rain" />
+              <label>Weather</label>
+              <select name="weather">
+                <option value="">Select</option>
+                <option>Sunny</option>
+                <option>Cloudy</option>
+                <option>Rainy</option>
+                <option>Extreme Drought</option>
+                <option>Flood Near Surrounding Areas</option>
+              </select>
             </div>
             <div>
               <label>Cover Material</label>
               <input name="coverMaterial" />
             </div>
             <div>
-              <label>Total Tonnage (MT)</label>
-              <input type="number" step="0.01" min="0" name="tonnage" />
+              <label>Total Tonnage (MT) - Can Integrate with API to Weighbridge</label>
+              <input type="number" step="1" min="0" name="tonnage" placeholder="Enter integer value" />
             </div>
           </div>
 
-          <h3>Operation Hours</h3>
+          <h3>Operation Hours (24 Hour Format)</h3>
           <div class="grid">
             <div>
               <label>Start</label>
@@ -138,10 +145,10 @@
             <div><label>Security Guard</label><input type="number" min="0" name="manpowerSecurity" value="3" /></div>
           </div>
 
-          <h3>Equipment / Machineries</h3>
+          <h3>Equipment / Machineries (On-site / Operating)</h3>
           <div class="row">
             <div>
-              <label>Landfill Compactor (On-site / Operating)</label>
+              <label>Landfill Compactor</label>
               <div class="grid">
                 <input type="number" min="0" name="equipCompactorOnsite" placeholder="On-site" />
                 <input type="number" min="0" name="equipCompactorOperating" placeholder="Operating" />
@@ -150,53 +157,56 @@
             <div>
               <label>Excavator</label>
               <div class="grid">
-                <input type="number" min="0" name="equipExcavatorOnsite" />
-                <input type="number" min="0" name="equipExcavatorOperating" />
+                <input type="number" min="0" name="equipExcavatorOnsite" placeholder="On-site" />
+                <input type="number" min="0" name="equipExcavatorOperating" placeholder="Operating" />
               </div>
             </div>
             <div>
               <label>Bulldozer</label>
               <div class="grid">
-                <input type="number" min="0" name="equipBulldozerOnsite" />
-                <input type="number" min="0" name="equipBulldozerOperating" />
+                <input type="number" min="0" name="equipBulldozerOnsite" placeholder="On-site" />
+                <input type="number" min="0" name="equipBulldozerOperating" placeholder="Operating" />
               </div>
             </div>
             <div>
               <label>Dump Truck</label>
               <div class="grid">
-                <input type="number" min="0" name="equipDumpTruckOnsite" />
-                <input type="number" min="0" name="equipDumpTruckOperating" />
+                <input type="number" min="0" name="equipDumpTruckOnsite" placeholder="On-site" />
+                <input type="number" min="0" name="equipDumpTruckOperating" placeholder="Operating" />
               </div>
             </div>
             <div>
-              <label>JCB</label>
+              <label>Backhoe</label>
               <div class="grid">
-                <input type="number" min="0" name="equipJcbOnsite" />
-                <input type="number" min="0" name="equipJcbOperating" />
+                <input type="number" min="0" name="equipBackhoeOnsite" placeholder="On-site" />
+                <input type="number" min="0" name="equipBackhoeOperating" placeholder="Operating" />
               </div>
             </div>
             <div>
-              <label>Water Tanker</label>
+              <label>Water Truck</label>
               <div class="grid">
-                <input type="number" min="0" name="equipWaterTankerOnsite" />
-                <input type="number" min="0" name="equipWaterTankerOperating" />
+                <input type="number" min="0" name="equipWaterTruckOnsite" placeholder="On-site" />
+                <input type="number" min="0" name="equipWaterTruckOperating" placeholder="Operating" />
               </div>
             </div>
             <div>
               <label>Long Arm</label>
               <div class="grid">
-                <input type="number" min="0" name="equipLongArmOnsite" />
-                <input type="number" min="0" name="equipLongArmOperating" />
+                <input type="number" min="0" name="equipLongArmOnsite" placeholder="On-site" />
+                <input type="number" min="0" name="equipLongArmOperating" placeholder="Operating" />
               </div>
             </div>
             <div>
               <label>Roller Compactor</label>
               <div class="grid">
-                <input type="number" min="0" name="equipRollerOnsite" />
-                <input type="number" min="0" name="equipRollerOperating" />
+                <input type="number" min="0" name="equipRollerOnsite" placeholder="On-site" />
+                <input type="number" min="0" name="equipRollerOperating" placeholder="Operating" />
               </div>
             </div>
           </div>
+
+          <label>Equipment/Machinery Comments</label>
+          <textarea name="equipmentComments" rows="2" placeholder="General comments about equipment/machinery status"></textarea>
 
           <h3>Activities / Work Record</h3>
           <div class="row">
@@ -211,16 +221,16 @@
           </div>
           <div class="row">
             <div>
-              <label>Project</label>
+              <label>Ongoing Project Status</label>
               <textarea name="activitiesProject" rows="3" placeholder="Access road, bund, tipping platform..."></textarea>
             </div>
             <div>
-              <label>Others</label>
+              <label>Other Activity Comments</label>
               <textarea name="activitiesOthers" rows="3" placeholder="Detention pond monitoring, stream monitoring, etc."></textarea>
             </div>
           </div>
 
-          <h3>Rainfall</h3>
+          <h3>Rainfall (24 Hour Format)</h3>
           <div class="grid">
             <div><label>Start Time</label><input type="time" name="rainStart" /></div>
             <div><label>End Time</label><input type="time" name="rainEnd" /></div>
@@ -230,47 +240,108 @@
 
           <h3>Next Day Weather Forecast</h3>
           <div class="grid">
-            <div><label>Morning</label><input name="forecastMorning" placeholder="Rain" /></div>
-            <div><label>Evening</label><input name="forecastEvening" placeholder="Rain" /></div>
-            <div><label>Night</label><input name="forecastNight" placeholder="Clear" /></div>
+            <div>
+              <label>Morning</label>
+              <select name="forecastMorning">
+                <option value="">Select</option>
+                <option>Sunny</option>
+                <option>Cloudy</option>
+                <option>Rainy</option>
+                <option>Extreme Drought</option>
+                <option>Flooding</option>
+              </select>
+            </div>
+            <div>
+              <label>Evening</label>
+              <select name="forecastEvening">
+                <option value="">Select</option>
+                <option>Sunny</option>
+                <option>Cloudy</option>
+                <option>Rainy</option>
+                <option>Extreme Drought</option>
+                <option>Flooding</option>
+              </select>
+            </div>
+            <div>
+              <label>Night</label>
+              <select name="forecastNight">
+                <option value="">Select</option>
+                <option>Sunny</option>
+                <option>Cloudy</option>
+                <option>Rainy</option>
+                <option>Extreme Drought</option>
+                <option>Flooding</option>
+              </select>
+            </div>
           </div>
 
           <h3>LTP Final Discharged</h3>
           <div class="grid">
             <div><label>Vol. intake (m3)</label><input type="number" step="0.01" name="ltpVolIntake" /></div>
             <div><label>Vol. discharge (m3)</label><input type="number" step="0.01" name="ltpVolDischarge" /></div>
-            <div><label>Prev. day discharge (m3)</label><input type="number" step="0.01" name="ltpPrevDay" /></div>
           </div>
 
-          <h3>Tonnage Received</h3>
+          <h3>Overall Tonnage Summary</h3>
           <div class="grid">
             <div><label>Prev. day tonnage</label><input type="number" step="0.01" name="prevDayTonnage" /></div>
             <div><label>Prev. day trips</label><input type="number" step="1" name="prevDayTrips" /></div>
-            <div><label>Total tonnage (overall)</label><input type="number" step="0.01" name="totalTonnage" /></div>
-            <div><label>Total trips (overall)</label><input type="number" step="1" name="totalTrips" /></div>
-            <div><label>Total (Daily)</label><input type="number" step="0.01" name="dailyTotal" /></div>
+          </div>
+          <div class="grid">
+            <div><label>Today Tonnage (daily)</label><input type="number" step="0.01" name="dailyTotal" /></div>
             <div><label>Total (Monthly)</label><input type="number" step="0.01" name="monthlyTotal" /></div>
           </div>
 
           <label>Notes</label>
           <textarea name="notes" rows="3" placeholder="Additional notes (soil trips, issues, actions)"></textarea>
 
-          <label>Photos</label>
-          <input type="file" name="photos" multiple accept="image/*" />
+          <label>Photos (Minimum 1, Maximum 5)</label>
+          <input type="file" name="photos" multiple accept="image/*" required />
 
           <button type="submit">Submit Report</button>
         </form>
       </section>
 
-      <section>
+      <section id="summary-section">
         <div class="flex-between">
           <h2>Past Reports</h2>
-          <button id="refresh-btn" class="secondary">Refresh</button>
+          <div style="display:flex; gap:12px;">
+            <button id="detail-view-btn" class="secondary">Past Report Detail Page</button>
+            <button id="refresh-btn" class="secondary">Refresh</button>
+          </div>
         </div>
         <ul id="reports-list"></ul>
       </section>
+
+      <section id="detail-view" class="hidden">
+        <div class="flex-between">
+          <h2>Past Report Details (Last 60 Days)</h2>
+          <button id="back-to-summary-btn" class="secondary">Back to Report Submission Page</button>
+        </div>
+        <div id="detail-list"></div>
+      </section>
     </div>
   </main>
+
+  <footer style="background: var(--mid); color: #fff; padding: 20px; margin-top: 40px; text-align: center;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; font-size: 13px;">
+      <div>
+        <strong>User Location:</strong><br>
+        <span id="user-location">Loading...</span>
+      </div>
+      <div>
+        <strong>User Time:</strong><br>
+        <span id="user-time">--</span>
+      </div>
+      <div>
+        <strong>Developed by:</strong><br>
+        <a href="https://net1io.com" target="_blank" style="color: #60a5fa; text-decoration: none;">net1io.com</a>
+      </div>
+      <div>
+        <strong>Copyright:</strong><br>
+        &copy; Reserved 2025
+      </div>
+    </div>
+  </footer>
 
   <script>
     const apiBase = 'http://localhost:4000';
@@ -334,8 +405,8 @@
         ['Excavator', form.equipExcavatorOnsite.value, form.equipExcavatorOperating.value],
         ['Bulldozer', form.equipBulldozerOnsite.value, form.equipBulldozerOperating.value],
         ['Dump Truck', form.equipDumpTruckOnsite.value, form.equipDumpTruckOperating.value],
-        ['JCB', form.equipJcbOnsite.value, form.equipJcbOperating.value],
-        ['Water Tanker', form.equipWaterTankerOnsite.value, form.equipWaterTankerOperating.value],
+        ['Backhoe', form.equipBackhoeOnsite.value, form.equipBackhoeOperating.value],
+        ['Water Truck', form.equipWaterTruckOnsite.value, form.equipWaterTruckOperating.value],
         ['Long Arm', form.equipLongArmOnsite.value, form.equipLongArmOperating.value],
         ['Roller Compactor', form.equipRollerOnsite.value, form.equipRollerOperating.value],
       ].map(([type, onsite, operating]) => ({ type, onsite: toNumber(onsite), operating: toNumber(operating) }));
@@ -358,6 +429,7 @@
         operationHours: { start: form.operationStart.value, end: form.operationEnd.value },
         manpower,
         equipment,
+        equipmentComments: form.equipmentComments.value,
         activities: {
           operation: form.activitiesOperation.value,
           ltp: form.activitiesLtp.value,
@@ -378,13 +450,10 @@
         ltpFinalDischarge: {
           volIntake: toNumber(form.ltpVolIntake.value),
           volDischarge: toNumber(form.ltpVolDischarge.value),
-          prevDay: toNumber(form.ltpPrevDay.value),
         },
         tonnageBreakdown: {
           prevDayTonnage: toNumber(form.prevDayTonnage.value),
           prevDayTrips: toNumber(form.prevDayTrips.value),
-          totalTonnage: toNumber(form.totalTonnage.value),
-          totalTrips: toNumber(form.totalTrips.value),
           dailyTotal: toNumber(form.dailyTotal.value),
           monthlyTotal: toNumber(form.monthlyTotal.value),
         },
@@ -400,6 +469,19 @@
         return;
       }
       const form = e.target;
+      const photoInput = form.photos;
+      const photoCount = photoInput.files.length;
+
+      // Validate photo count
+      if (photoCount < 1) {
+        alert('Please select at least 1 photo.');
+        return;
+      }
+      if (photoCount > 5) {
+        alert('Maximum 5 photos allowed. You selected ' + photoCount + '.');
+        return;
+      }
+
       const formData = new FormData(form);
       formData.set('tonnage', form.tonnage.value || '');
       formData.append('extras', JSON.stringify(collectExtras(form)));
@@ -442,10 +524,126 @@
 
     document.getElementById('refresh-btn').onclick = updateReports;
 
+    // Detail view functionality
+    const detailViewSection = document.getElementById('detail-view');
+    const detailList = document.getElementById('detail-list');
+    const formSection = document.querySelector('#app-view > section:first-child');
+    const summarySection = document.getElementById('summary-section');
+
+    document.getElementById('detail-view-btn').onclick = async () => {
+      if (!token) {
+        alert('Please log in first.');
+        return;
+      }
+
+      // Calculate date 60 days ago
+      const sixtyDaysAgo = new Date();
+      sixtyDaysAgo.setDate(sixtyDaysAgo.getDate() - 60);
+      const dateFrom = sixtyDaysAgo.toISOString().split('T')[0];
+
+      const res = await fetch(`${apiBase}/api/reports?dateFrom=${dateFrom}&limit=100`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (!res.ok) {
+        alert('Failed to load reports');
+        return;
+      }
+      const data = await res.json();
+
+      detailList.innerHTML = '';
+
+      if (!data.items || data.items.length === 0) {
+        detailList.innerHTML = '<p style="padding: 20px; text-align: center; color: #6b7280;">No reports found in the last 60 days. Create your first report to see it here!</p>';
+      } else {
+        data.items.forEach((item) => {
+          const extras = item.data || {};
+          const card = document.createElement('div');
+          card.style.cssText = 'border: 1px solid #e5e7eb; padding: 10px 12px; margin-bottom: 8px; border-radius: 6px; background: #fff; font-size: 12px;';
+
+          // Format manpower details
+          let manpowerDetails = '';
+          if (extras.manpower) {
+            manpowerDetails = `Manager: ${extras.manpower.manager || 0}, Site Eng: ${extras.manpower.siteEngineer || 0}, Jr Eng: ${extras.manpower.jrEngineer || 0}, Safety: ${extras.manpower.safetyHealth || 0}, Supervisor: ${extras.manpower.supervisor || 0}, Tech LTP: ${extras.manpower.technicianLtp || 0}, LTP Op: ${extras.manpower.ltpOperator || 0}, Housekeeping: ${extras.manpower.housekeeping || 0}, Traffic: ${extras.manpower.trafficController || 0}, Weighbridge: ${extras.manpower.weighbridgeOperator || 0}, Security: ${extras.manpower.securityGuard || 0}`;
+          }
+
+          // Format equipment details
+          let equipmentDetails = '';
+          if (extras.equipment && extras.equipment.length > 0) {
+            equipmentDetails = extras.equipment.map(e => `${e.type}: ${e.onsite || 0}/${e.operating || 0}`).join(', ');
+          }
+
+          card.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+              <h4 style="margin: 0; font-size: 14px;">${item.site_name} — ${item.report_date}</h4>
+              <span style="font-size: 11px; color: #6b7280;">By: ${item.created_by_email || 'unknown'}</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 6px; margin-bottom: 6px;">
+              <div><strong>Status:</strong> ${item.status || 'N/A'}</div>
+              <div><strong>Weather:</strong> ${item.weather || '-'}</div>
+              <div><strong>Tonnage:</strong> ${item.tonnage || 0} MT</div>
+              <div><strong>Cover Material:</strong> ${item.cover_material || '-'}</div>
+            </div>
+            ${extras.operationHours ? `<div style="margin: 4px 0;"><strong>Operation Hours:</strong> ${extras.operationHours.start || '-'} to ${extras.operationHours.end || '-'}</div>` : ''}
+            ${manpowerDetails ? `<div style="margin: 4px 0;"><strong>Manpower:</strong> ${manpowerDetails}</div>` : ''}
+            ${equipmentDetails ? `<div style="margin: 4px 0;"><strong>Equipment (Onsite/Operating):</strong> ${equipmentDetails}</div>` : ''}
+            ${extras.rainfall ? `<div style="margin: 4px 0;"><strong>Rainfall:</strong> ${extras.rainfall.start || '-'} to ${extras.rainfall.end || '-'}, ${extras.rainfall.volume || '-'} mm ${extras.rainfall.remarks ? '(' + extras.rainfall.remarks + ')' : ''}</div>` : ''}
+            ${extras.weatherForecast ? `<div style="margin: 4px 0;"><strong>Forecast:</strong> Morning: ${extras.weatherForecast.morning || '-'}, Evening: ${extras.weatherForecast.evening || '-'}, Night: ${extras.weatherForecast.night || '-'}</div>` : ''}
+            ${extras.ltpFinalDischarge ? `<div style="margin: 4px 0;"><strong>LTP:</strong> Intake: ${extras.ltpFinalDischarge.volIntake || 0} m³, Discharge: ${extras.ltpFinalDischarge.volDischarge || 0} m³</div>` : ''}
+            ${extras.tonnageBreakdown ? `<div style="margin: 4px 0;"><strong>Tonnage Summary:</strong> Prev Day: ${extras.tonnageBreakdown.prevDayTonnage || 0} MT (${extras.tonnageBreakdown.prevDayTrips || 0} trips), Today: ${extras.tonnageBreakdown.dailyTotal || 0} MT, Monthly: ${extras.tonnageBreakdown.monthlyTotal || 0} MT</div>` : ''}
+          `;
+
+          detailList.appendChild(card);
+        });
+      }
+
+      // Hide form and summary sections, show detail view
+      formSection.classList.add('hidden');
+      summarySection.classList.add('hidden');
+      detailViewSection.classList.remove('hidden');
+    };
+
+    document.getElementById('back-to-summary-btn').onclick = () => {
+      // Hide detail view, show form and summary sections
+      detailViewSection.classList.add('hidden');
+      formSection.classList.remove('hidden');
+      summarySection.classList.remove('hidden');
+    };
+
     if (token) {
       setSignedIn('session active');
       updateReports();
     }
+
+    // User location and time
+    function updateFooterInfo() {
+      const userTimeEl = document.getElementById('user-time');
+      const userLocationEl = document.getElementById('user-location');
+
+      if (userTimeEl) {
+        const now = new Date();
+        userTimeEl.textContent = now.toLocaleString();
+      }
+
+      if (userLocationEl && navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            userLocationEl.textContent = `${position.coords.latitude.toFixed(4)}, ${position.coords.longitude.toFixed(4)}`;
+          },
+          () => {
+            userLocationEl.textContent = 'Location unavailable';
+          }
+        );
+      }
+    }
+
+    updateFooterInfo();
+    setInterval(() => {
+      const userTimeEl = document.getElementById('user-time');
+      if (userTimeEl) {
+        userTimeEl.textContent = new Date().toLocaleString();
+      }
+    }, 1000);
   </script>
 </body>
 </html>

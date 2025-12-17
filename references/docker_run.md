@@ -1,0 +1,2 @@
+docker restart landfill_backend
+docker stop landfill_backend

@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: landfill_postgres
+    environment:
+      POSTGRES_DB: landfill_reports
+      POSTGRES_USER: landfill_user
+      POSTGRES_PASSWORD: landfill_pass
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U landfill_user -d landfill_reports"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: landfill_backend
+    ports:
+      - "4000:4000"
+    environment:
+      DATABASE_URL: postgresql://landfill_user:landfill_pass@postgres:5432/landfill_reports
+      JWT_SECRET: ${JWT_SECRET:-dev-secret-change-in-production}
+      PORT: 4000
+      UPLOAD_DIR: uploads
+      NODE_ENV: development
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+      - ./backend/uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: npm run dev
+
+volumes:
+  postgres_data:
